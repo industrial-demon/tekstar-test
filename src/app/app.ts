@@ -1,19 +1,14 @@
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpErrorResponse,
-  provideHttpClient,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MockData } from './types/mock-data';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { catchError, delay, of, Subject, switchMap, tap } from 'rxjs';
-import { ProductDialogComponent } from './product-dialog';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { catchError, delay, of, Subject, switchMap, tap } from 'rxjs';
+
+import { ProductDialogComponent } from './product-dialog';
+import { MockData } from './types/mock-data';
 @Component({
   selector: 'app-root',
   imports: [
@@ -43,7 +38,7 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     const fetch$ = this.http
-      .get<MockData>('assets/mock-data.json')
+      .get<MockData>('assets/data/mock-data.json')
       .pipe(catchError((e: HttpErrorResponse) => of(e)));
 
     fetch$
@@ -51,7 +46,7 @@ export class App implements OnInit {
         tap(() => {
           this.loading.set(true);
         }),
-        // delay(4000),
+        delay(4000),
         tap(() => {
           this.loading.set(false);
         }),
@@ -59,8 +54,8 @@ export class App implements OnInit {
       )
       .subscribe((resp) => {
         if (resp instanceof HttpErrorResponse) {
-          this.snackBar.open('Smething went wrong','', {
-            duration: 500
+          this.snackBar.open('Smething went wrong', '', {
+            duration: 500,
           });
         }
 
@@ -81,8 +76,6 @@ export class App implements OnInit {
             .afterClosed()
         )
       )
-      .subscribe((data) => {
-        // alert(`Editable data sending to server: ${JSON.stringify(data)}`)
-      });
+      .subscribe((data) => {});
   }
 }

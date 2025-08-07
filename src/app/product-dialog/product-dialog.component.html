@@ -1,8 +1,404 @@
-<div class="product-info">
+<div class="product-dialog">
+  <header class="product-dialog-header">
+    <h3>{{ product.id }}</h3>
 
-  {{ data.id }}
+    <div class="product-dialog-header-actions">
+      <div class="product-action">
+        <button class="product-edit-trigger">
+          <img src="assets/edit-icon.png" width="18" height="18" />
+          Edit
+        </button>
+      </div>
 
-  
+      <div class="header-actions">
+        <div>
+          <button class="header-action header-action--prev">
+            <img src="assets/arrow-prev.png" width="30" height="30" />
+          </button>
 
+          <button class="header-action header-action--next">
+            <img src="assets/arrow-next.png" width="30" height="30" />
+          </button>
+        </div>
 
+        <button class="header-action">
+          <img src="assets/max-size.png" width="30" height="30" />
+        </button>
+
+        <button class="header-action" (click)="onClose()">
+          <img src="assets/close-icon.png" width="30" height="30" />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <mat-dialog-content>
+    <div class="product-info">
+      <section class="product-settings-section">
+        <div class="product-settings product-settings-col--1">
+          <div class="product-settings-details">
+            <div class="product-setting">
+              <span class="product-setting-label"> Brand </span>
+              <span class="product-setting-value"> {{ product.brand }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Model/Series </span>
+              <span class="product-setting-value">
+                {{ product.model_series }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Devise P/N </span>
+              <span class="product-setting-value">
+                {{ product.device_pn }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Dev. Type </span>
+              <span class="product-setting-value">
+                {{ product.dev_type }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> RNK </span>
+              <span class="product-setting-value"> {{ product.rnk }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Min price</span>
+              <span class="product-setting-value">
+                {{ product.min_price }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Max price</span>
+              <span class="product-setting-value">
+                {{ product.max_price }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Quantity</span>
+              <span class="product-setting-value">
+                {{ product.quantity }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> ePrq</span>
+              <span class="product-setting-value"> {{ product.ePrq }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> eA4q</span>
+              <span class="product-setting-value"> {{ product.eA4q }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> photo_device</span>
+              <span class="product-setting-value">
+                <a
+                  class="product-photo-external-link"
+                  [href]="product.photo_device"
+                  target="_blank"
+                >
+                  {{ product.photo_device }}
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div class="product-settings-action">
+            <img src="assets/arrow-right.png" width="25" height="25" />
+
+            <a
+              class="external-link--product-photo"
+              [href]="product.photo_device"
+              target="_blank"
+            >
+              <img
+                class="external-link"
+                src="assets/external-link-icon.png"
+                width="25"
+                height="25"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div class="product-settings product-settings-col--2">
+          <div class="product-settings-details">
+            <div class="product-setting">
+              <span class="product-setting-label"> sku </span>
+              <span class="product-setting-value"> {{ product.sku }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> l-user </span>
+              <span class="product-setting-value">
+                {{ product.l_user }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Category </span>
+              <span class="product-setting-value">
+                {{ product.category }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> e-user </span>
+              <span class="product-setting-value">
+                {{ product.e_user }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> green_id </span>
+              <span class="product-setting-value">
+                {{ product.green_id }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> edit_at</span>
+              <span class="product-setting-value">
+                {{ product.edit_at }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> create_at</span>
+              <span class="product-setting-value">
+                {{ product.create_at }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> amazon listing src</span>
+              <span class="product-setting-value">
+                {{ product.amazon_listing_src }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> eLCCq</span>
+              <span class="product-setting-value"> {{ product.elCcq }} </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> amazq</span>
+              <span class="product-setting-value">
+                {{ product.amazq }}
+              </span>
+            </div>
+
+            <div class="product-setting">
+              <span class="product-setting-label"> Notes</span>
+              <span class="product-setting-value"> {{ product.notes }} </span>
+            </div>
+          </div>
+
+          <div class="product-settings-action">
+            <img src="assets/arrow-right.png" width="25" height="25" />
+            <img src="assets/arrow-right.png" width="25" height="25" />
+            <img src="assets/arrow-right.png" width="25" height="25" />
+            <img src="assets/arrow-right.png" width="25" height="25" />
+
+            <a
+              class="external-link--amazon"
+              [href]="product.amazon_listing_src"
+              target="_blank"
+            >
+              <img src="assets/external-link-icon.png" width="25" height="25" />
+            </a>
+          </div>
+        </div>
+        <div class="product-photos">
+          <div class="product-photo-front">
+            <img src="assets/device-front.png" width="225" />
+          </div>
+          <div class="product-photo-front">
+            <img src="assets/device-back.png" width="225" />
+          </div>
+        </div>
+      </section>
+
+      <section class="product-list-location">
+        <table>
+          <caption>
+            <span>
+              <span> List location</span>
+              <span class="badge"> 6 </span>
+            </span>
+          </caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Brand</th>
+              <th>Category</th>
+              <th>Device P/N</th>
+              <th>Gty</th>
+              <th>Condition</th>
+              <th>Edit user</th>
+              <th>Notes</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for(location of product.location; track location.id ;){
+            <tr>
+              <td>
+                {{ location.id }}
+              </td>
+
+              <td>
+                {{ location.brand }}
+              </td>
+
+              <td>
+                {{ location.category }}
+              </td>
+
+              <td>
+                {{ location.device_pn }}
+              </td>
+
+              <td>
+                {{ location.qty }}
+              </td>
+              <td>
+                {{ location.condition }}
+              </td>
+              <td>
+                {{ location.edit_user }}
+              </td>
+              <td>
+                {{ location.notes }}
+              </td>
+
+              <td class="action">
+                <img src="assets/arrow-right.png" width="25" height="25" />
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+
+      <section class="product-ebay_listings">
+        <table>
+          <caption>
+            <span>
+              <span>list ebay vision listings</span>
+              <span class="badge"> 53 </span>
+            </span>
+          </caption>
+          <thead>
+            <tr>
+              <th>Listing_id</th>
+              <th>SKU</th>
+              <th>Condition_id</th>
+              <th>Product_id</th>
+              <th>Title</th>
+              <th>price</th>
+              <th>listing_qty</th>
+              <th>inventory_qty</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for(listing of product.ebay_listings; track listing.listing_id;){
+            <tr>
+              <td>
+                {{ listing.listing_id }}
+              </td>
+
+              <td>
+                {{ listing.sku }}
+              </td>
+
+              <td>
+                {{ listing.condition_id }}
+              </td>
+
+              <td>
+                {{ listing.product_id }}
+              </td>
+
+              <td>
+                {{ listing.title }}
+              </td>
+              <td>
+                {{ listing.price }}
+              </td>
+              <td>
+                {{ listing.listing_qty }}
+              </td>
+              <td>
+                {{ listing.inventory_qty }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+
+      <section class="product-same-products">
+        <table>
+          <caption>
+            <span>
+              <span>same products</span>
+              <span class="badge"> 1 </span>
+            </span>
+          </caption>
+          <thead>
+            <tr>
+              <th>Original_id</th>
+              <th>same_id</th>
+              <th>fk_edit_employee</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for(sameProduct of product.same_products; track
+            sameProduct.original_id;){
+            <tr>
+              <td>
+                {{ sameProduct.original_id }}
+              </td>
+
+              <td>
+                {{ sameProduct.same_id }}
+              </td>
+
+              <td>
+                {{ sameProduct.fk_edit_employee }}
+              </td>
+
+              <td class="action">
+                <img src="assets/arrow-right.png" width="25" height="25" />
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </mat-dialog-content>
+
+  <footer class="product-dialog-footer">
+    <div class="footer-actions">
+      <button class="expand-trigger">Expand</button>
+      <button class="add-trigger">Add</button>
+    </div>
+  </footer>
 </div>
